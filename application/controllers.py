@@ -163,7 +163,8 @@ def ad_summary():
     sizes = [applied, shortlisted, selected, rejected]
     colors = ["yellow",  "blue", "green", "red"]
     plt.pie(sizes, labels=labels, colors=colors, autopct='%1.1f%%')
-    plt.savefig("placement-portal-application/static/pie.png")
+    plt.savefig("static/pie.png")
+    # static\pie.png
     plt.clf()
 
 #bar_chart
@@ -172,7 +173,7 @@ def ad_summary():
     plt.bar(labels, sizes)
     plt.xlabel('Entities')
     plt.ylabel('Count')
-    plt.savefig("placement-portal-application/static/bar.png")
+    plt.savefig("static/bar.png")
     plt.clf()
 
     return render_template("admin_summary.html",
