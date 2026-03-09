@@ -8,28 +8,62 @@
 <style>
     #form-body{
         width:50%;
+        height:420px;
+        margin-top: -10px;
+        padding: 30px;
     }
 </style>
 </head>
 <body>
     <div id="main">
         <div id="canvas">
-            <div id="form-body">
-               <div class="text-center">
+            <div id="top">
+                <nav class="navbar navbar-expand-lg bg-body-tertiary shadow">                    
+                    <div class="container-fluid">
+                        <a class="navbar-brand" href="#">Welcome {{this_user.username}}</a>
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                                <form class="d-flex" method="GET" action="{{ url_for('search') }}">                                    
+                                    <input class="form-control me-2" type="search" placeholder="Students, Companies" aria-label="Search" name="search">
+                                    <select class="form-select me-2" aria-label="Default select example" name='key'>
+                                        <option selected>Choose</option>
+                                        <option value="student">Student</option>
+                                        <option value="company">Company</option>
+                                    </select>
+                                    <input class="btn btn-outline-success" type="submit" value="Search"> 
+                                </form>
+                                <li class="nav-item mx-2">
+                                    <a class="btn btn-outline-danger me-2" href="{{ url_for('logout') }}">Logout</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div><br>
+            <div class="text-center">
                     <h4>Drive Details</h4><br>
-                </div>
+            </div>
+            <div id="form-body">
+               
                 <div id="details">
-                    <p><strong>Company Name : </strong>Company1</p>
-                    <p><strong>Drive Name : </strong>Drive 2</p>
-                    <p><strong>Job Title : </strong>Data Scientist</p>
-                    <p><strong>Job Description : </strong>This drive is for Data Scientist positions. Candidates should have experience in Python.</p>
-                    <p><strong>Salary : </strong>50,000 INR</p>
-                    <p><strong>Location : </strong>Chennai</p>
+                    <p><strong>Company Name : </strong>{{ drive.company.username }}</p>
+                    <p><strong>Drive Name : </strong>{{ drive.name }}</p>
+                    <p><strong>Job Title : </strong>{{ drive.job_title }}</p>
+                    <p><strong>Job Description : </strong>{{ drive.job_description }}</p>
+                    <p><strong>Job Location : </strong>{{ drive.job_location }}</p>
+                    <p><strong>Eligibility : </strong>{{ drive.eligibility_criteria }}</p>
+                    <p><strong>Salary : </strong>{{ drive.job_salary }} INR</p> 
+                    <p><strong>Deadline : </strong>{{ drive.application_deadline }}</p>
                 </div>
-                <div class="text-center">   
-                    <input type="submit" class="btn btn-primary" value="Back">
-                </div> 
-            </div>    
+            </div><br> 
+            <div class="text-center">   
+                <a href="{{ url_for('admin') }}" class="btn btn-primary">
+                    Back
+                </a>
+            </div> 
         </div>
     </div>
 </body>

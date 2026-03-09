@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+    rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+<style>
+    #form-body{
+        margin-top : 0px;
+        height:450px;
+        width : 50%;
+        padding:35px;
+    }
+</style>    
+</head>
+<body>
+    <div id="main">
+        <div id="canvas">
+            <div id="top">
+                <nav class="navbar navbar-expand-lg bg-body-tertiary">                    
+                    <div class="container-fluid">
+                        <a class="navbar-brand">Welcome {{this_user.username}}</a>
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                                <li class="nav-item mx-2">
+                                    <a class="btn btn-outline-success me-2" href="{{ url_for('admin') }}">Back</a>
+                                </li>
+                                <form class="d-flex" method="GET" action="{{ url_for('search') }}">                                    
+                                    <input class="form-control me-2" type="search" placeholder="Students, Companies" aria-label="Search" name="search">
+                                    <select class="form-select me-2" aria-label="Default select example" name='key'>
+                                        <option selected>Choose</option>
+                                        <option value="student">Student</option>
+                                        <option value="company">Company</option>
+                                    </select>
+                                    <input class="btn btn-outline-success" type="submit" value="Search"> 
+                                </form>
+                                <li class="nav-item mx-2">
+                                    <a class="btn btn-outline-danger me-2" href="{{ url_for('logout') }}">Logout</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            {% if results %}
+            <div class="text-center"><br>
+                    <h4>{{ search_word }} Details</h4><br>
+            </div>
+            <div id="form-body">
+
+            {% for result in results %}
+
+                <div id="details">
+                    {% if key=="student" %}
+
+                    <p><strong>Student ID : </strong>{{ result.id }}</p>                    
+                    <p><strong>Student Name : </strong>{{ result.username }}</p>
+                    <p><strong>Email ID : </strong>{{ result.email }}</p>
+                    <p><strong>Age : </strong>{{ result.age }}</p>
+                    <p><strong>Gender : </strong>{{ result.gender }}</p>
+                    <p><strong>Department : </strong>{{ result.department }}</p>
+                    <p><strong>CGPA : </strong>{{ result.cgpa }}</p> 
+                    <p><strong>Active Status : </strong>{{ result.is_active }}</p>
+                    
+                    {% elif key=="company" %}
+                    
+                    <p><strong>Company ID : </strong>{{ result.id }}</p>
+                    <p><strong>Company Name : </strong>{{ result.username }}</p>
+                    <p><strong>Email Id : </strong>{{ result.email }}</p>
+                    <p><strong>Brief Description : </strong>{{ result.brief }}</p>
+                    <p><strong>Headquarter : </strong>{{ result.headquarter }}</p>
+                    <p><strong>Website : </strong>{{ result.website }}</p>
+                    <p><strong>Hr Contact : </strong>{{ result.hr_contact }}</p>
+                    <p><strong>Active Status : </strong>{{ result.is_active }}</p>
+                    <p><strong>Approved Status : </strong>{{ result.is_approved }}</p>
+                    
+                    {% endif %}
+
+                </div><br>
+            {% endfor %}
+
+            {% else %}
+                <div class="text-center">
+                    <h5>No results found for "{{ search_word }}"</h5>
+                </div>
+            {% endif %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>

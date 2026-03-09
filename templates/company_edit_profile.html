@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Company Edit Profile</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+    rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+<style>
+    #form-body{
+        width: 370px;
+        height: 610px;
+        margin-top: 30px;
+    }
+    #inside-content{
+        padding: 20px;
+        height:510px;
+    }
+</style>
+</head>
+<body>
+    <div id="main">
+        <div id="canvas">
+            <div id="top">
+                <nav class="navbar navbar-expand-lg bg-body-tertiary">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#">Welcome {{company.username}}</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                            <li class="nav-item mx-2">
+                                <a class="btn btn-outline-success me-2" href="{{ url_for('company') }}">Back</a>
+                            </li>
+                            <li class="nav-item mx-2">
+                                <a class="btn btn-outline-success me-2" href="{{ url_for('cmp_history') }}">History</a>
+                            </li>
+                            <li class="nav-item mx-2">
+                                <a class="btn btn-outline-success me-2" href="{{ url_for('create_drive') }}">Create Drive</a>
+                            </li>
+                            <li class="nav-item mx-2">
+                                <a class="btn btn-outline-danger me-2" href="{{ url_for('logout') }}">Logout</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                </nav>
+            </div><br>
+            <div class="text-center">
+                <h4>Edit Profile</h4>
+            </div>
+            <div id="inside-content">                    
+                <form action="{{ url_for('cmp_edit_profile') }}" method="post" class="row g-3">
+                    <div class="col-md-6">
+                        <label for="name" class="form-label">Company ID</label>
+                        <input type="text" class="form-control" value="{{ company.id }}" aria-label="Disabled input example" disabled readonly>                   
+                    </div>
+                    <div class="col-md-6">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="text" class="form-control" value="{{ company.email }}" aria-label="Disabled input example" disabled readonly>                   
+                    </div>
+                    <div class="col-md-6">
+                        <label for="active" class="form-label">Active Status</label>
+                        <input type="text" class="form-control" value="{{ company.is_active }}" aria-label="Disabled input example" disabled readonly>                   
+                    </div>
+                    <div class="col-md-6">
+                        <label for="approved" class="form-label">Approved Status</label>
+                        <input type="text" class="form-control" value="{{ company.is_approved }}" aria-label="Disabled input example" disabled readonly>                   
+                    </div>
+                    <div class="col-md-6">
+                        <label for="name" class="form-label">Company Name</label>
+                        <input type="text" class="form-control" id="name" name="name" value="{{ company.username }}" required>                    
+                    </div>
+                    <div class="col-md-6">
+                        <label for="website" class="form-label">Company Website</label>
+                        <input type="text" class="form-control" id="website" name="website" value="{{ company.website }}" required>                    
+                    </div>
+                    <div class="col-md-6">
+                        <label for="hr" class="form-label">HR Contact</label>
+                        <input type="email" class="form-control" id="hr" name="hr" value="{{ company.hr_contact }}" required>                    
+                    </div>
+                    <div class="col-md-6">
+                        <label for="headquarter" class="form-label">Headquarter</label>
+                        <input type="text" class="form-control" id="headquarter" name="headquarter" value="{{ company.headquarter }}" required>                    
+                    </div>
+                    <div class="col-12">
+                        <label for="brief" class="form-label">Brief Description</label>
+                        <input type="text" class="form-control" id="brief" name="brief" value="{{ company.brief }}" required>
+                    </div><br>
+                    <div class="text-center">   
+                        <button type="submit" class="btn btn-primary">
+                            Save
+                        </button>
+                    </div> 
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -7,28 +7,60 @@
     rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 <style>
     #form-body{
-        width:50%;
+        width:60%;
+        height:430px;
+        margin-top: 30px;
+        padding: 30px;
     }
 </style>
 </head>
 <body>
     <div id="main">
         <div id="canvas">
+            <div id="top">
+                <nav class="navbar navbar-expand-lg bg-body-tertiary">
+                <div class="container-fluid">
+                    <a class="navbar-brand">Welcome {{this_user.username}}</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                            <li class="nav-item mx-2">
+                                <a class="btn btn-outline-success me-2" href="{{ url_for('student') }}">Back</a>        <!--{{ url_for('create_drive') }} -->
+                            </li>
+                            <li class="nav-item mx-2">
+                                <a class="btn btn-outline-success me-2" href="#">History</a>        <!--{{ url_for('create_drive') }} -->
+                            </li>
+                            <li class="nav-item mx-2">
+                                <a class="btn btn-outline-success me-2" href="{{ url_for('std_edit_profile') }}">Edit Profile</a>
+                            </li>
+                            <li class="nav-item mx-2">
+                                <a class="btn btn-outline-danger me-2" href="{{ url_for('logout') }}">Logout</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                </nav>
+            </div><br> 
+            <div class="text-center">
+                    <h4>Drive Details</h4>
+            </div>
             <div id="form-body">
-               <div class="text-center">
-                    <h4>Drive Details</h4><br>
-                </div>
                 <div id="details">
-                    <p><strong>Company Name : </strong>Company1</p>
-                    <p><strong>Drive Name : </strong>Drive 2</p>
-                    <p><strong>Job Title : </strong>Data Scientist</p>
-                    <p><strong>Job Description : </strong>This drive is for Data Scientist positions. Candidates should have experience in Python.</p>
-                    <p><strong>Salary : </strong>50,000 INR</p>
-                    <p><strong>Location : </strong>Chennai</p>
+                    <p><strong>Company Name : </strong>{{ drive.company.username}}</p>
+                    <p><strong>Drive Name : </strong>{{ drive.name}}</p>
+                    <p><strong>Job Title : </strong>{{ drive.job_title }}</p>
+                    <p><strong>Job Description : </strong>{{ drive.job_description }}</p>
+                     <p><strong>Eligibility : </strong>{{ drive.eligibility_criteria }}</p>
+                    <p><strong>Salary : </strong>{{ drive.job_salary }} INR</p>
+                    <p><strong>Location : </strong>{{ drive.job_location }}</p>
+                    <p><strong>Deadline : </strong>{{ drive.application_deadline }}</p>
                 </div>
-                <div class="text-center">
-                    <input type="submit" class="btn btn-primary" value="Apply">   
-                    <input type="submit" class="btn btn-primary" value="Back">
+                <div class="text-center">   
+                    <a href="{{ url_for('apply', drive_id=drive.id) }}" class="btn btn-primary">
+                        Apply
+                    </a>
                 </div> 
             </div>    
         </div>

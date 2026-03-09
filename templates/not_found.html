@@ -13,6 +13,7 @@
         padding: 20px;
         border: 2px solid black;
         border-radius: 20px;
+        box-shadow: 10px 10px 8px rgb(95, 221, 243);
     }
 </style>
 </head>
@@ -22,7 +23,7 @@
             <div id="warning-body">
                 <h2 class="text-center text-danger">Oops !</h2><br>
                 <h5 class="text-center">User Not Found</h5><br>
-                <h5 class="text-center"><a href="register.html">Go to Register Page</a></h5>
+                <h5 class="text-center"><a href="{{ url_for('register') }}">Go to Register Page</a></h5>
             </div>
         </div>
     </div>

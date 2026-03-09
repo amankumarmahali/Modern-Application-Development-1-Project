@@ -3,25 +3,37 @@
 }
 
 #main{
-    /* border: 2px solid black; */
-    margin-top: 5px;
+    margin-top: 1px;
 }
 
 #canvas{
-    border: 2px solid black;
-    width:60%;
-    height: 670px;
+    border: 5px solid rgb(119, 64, 236);
+    width:80%;
+    height: 680px;
     margin:auto;
+    overflow-y: auto;
+    border-radius: 5px;
 }
 
 #form-body{
-    border:1px solid gray;
+    border:1px solid black;
     width: 300px;
     height: 400px;
     margin:auto;
     margin-top: 130px;
     border-radius: 20px;
     padding: 10px;
+    box-shadow: -20px 20px 10px rgb(95, 221, 243);
+}
+
+#top{
+    position: sticky;
+    top: 0;
+    background-color: white;
+    z-index: 100;
+    padding: 10px;
+    border-bottom: 1px solid black;
+    box-shadow: 0px 15px 10px rgb(95, 221, 243);
 }
 
 .headings{
@@ -31,39 +43,41 @@
 }
 
 #inside-content {
-    border: 3px solid black;
+    border: 2px solid black;
     border-radius: 10px;
     width: 80%;
-    height: 230px;
+    height: 360px;
     margin: auto;
-    padding: 0px;
+    padding: 15px;
     overflow-y: auto;    /* Enable scrolling */
+    box-shadow: -20px 20px 10px rgb(95, 221, 243);
 }
 
-/* Make table take full width */
 #inside-content table {
     width: 100%;
-    border-collapse: collapse;
+    border-collapse: separate;
 }
 
-#inside-content thead th  {
+#inside-content table td {
+    text-align: center;
+    padding: 10px;
+}
+
+#inside-content thead {
     position: sticky;
-    top: 0;
-    background-color: white;
+    top: -15px;
+    background: white;
     z-index: 1;
-    padding: 10px;
-    border-bottom: 2px solid black;
 }
 
-/* Proper spacing */
-#inside-content td {
+#inside-content thead th {
+    top:0px;
     padding: 10px;
+    position: sticky;
+    border-bottom: 2px solid black;
+    text-align: center;
 }
 
 #inside-overview{
     margin: 30px;
 }
-
-
-
-
