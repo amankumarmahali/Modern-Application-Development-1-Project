@@ -63,9 +63,9 @@ The institutes need efficient systems to manage campus recruitment activities in
 ┣ 📂 templates/                   # All templates
 ┣ 📜 app.py                       # Core app file
 ┣ 📜 README.md                    # Project documentation
- 
- 
+
 ```
+---
 ## 🧬 Database Schema Overview
 
 - **User**
